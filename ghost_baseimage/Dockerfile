@@ -28,15 +28,15 @@ RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
 CMD ["/sbin/my_init"]
 
 
-# Instalo NodeJS 
-RUN apt-get update && apt-get install -y nodejs npm
+# Instalo NodeJS y librerías del sistema utiles: cURL, zip, unzip
+RUN apt-get update && \
+	apt-get install -y nodejs npm && \
+	apt-get install -y curl && \
+	apt-get install zip unzip
+
 
 # ... y creo el enlace simbólico para que funcione el comando "node" (esto sucede por instalar NodeJS desde el gestor de paquetes)
 RUN ln -s /usr/bin/nodejs /usr/local/bin/node 
-
-
-# Instalo librerías del sistema utiles: cURL, zip, unzip
-RUN apt-get update && apt-get install -y curl && apt-get install zip unzip
 
 
 # Instalo Ghost. Para ello,
