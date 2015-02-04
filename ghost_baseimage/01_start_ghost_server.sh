@@ -1,5 +1,5 @@
 #!/bin/sh
 cd /home/ghost/
-exec NODE_ENV=production forever start index.js
+exec npm start --production >>/var/log/blog.log 2>&1
 echo "Servidor Node arrancado"
 exit 0
