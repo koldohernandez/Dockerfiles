@@ -52,8 +52,11 @@ RUN rm -f ghost.zip
 # ... creo el fichero config.js reemplazando 127.0.0.1 por 0.0.0.0
 RUN sed 's/127.0.0.1/0.0.0.0/' config.example.js > config.js
 
-# ... instalo las dependendias del proyecto
+# ... instalo las dependencias del proyecto
 RUN npm install --production
+
+# ... instalo forever ()
+RUN npm install forever -g
 
 
 # Pongo las variables de entorno que necesito
